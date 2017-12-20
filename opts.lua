@@ -3,7 +3,7 @@ cmd:text('Train the Visual Dialog model')
 cmd:text()
 cmd:text('Options')
 -- Data input settings
-cmd:option('-inputImg', 'data/data_img.h5', 'HDF5 file with image features')
+cmd:option('-inputImg', 'data/data_img_cumulative.h5', 'HDF5 file with image features')
 cmd:option('-inputQues', 'data/visdial_data.h5', 'HDF5 file with preprocessed questions')
 cmd:option('-inputJson', 'data/visdial_params.json', 'JSON file with info and vocab')
 cmd:option('-savePath', 'checkpoints/', 'Path to save checkpoints')
@@ -16,14 +16,14 @@ cmd:option('-imgNorm', 1, 'normalize the image feature. 1=yes, 0=no')
 
 -- model params
 cmd:option('-imgEmbedSize', 300, 'Size of the multimodal embedding')
-cmd:option('-imgFeatureSize', 4096, 'Size of the image feature');
+cmd:option('-imgFeatureSize', 2048, 'Size of the image feature');
 cmd:option('-embedSize', 300, 'Size of input word embeddings')
 cmd:option('-rnnHiddenSize', 512, 'Size of the LSTM state')
 cmd:option('-maxHistoryLen', 60, 'Maximum history to consider when using concatenated QA pairs');
 cmd:option('-numLayers', 2, 'Number of layers in LSTM')
 
 -- optimization params
-cmd:option('-batchSize', 40, 'Batch size (number of threads) (Adjust base on GPU memory)')
+cmd:option('-batchSize', 50, 'Batch size (number of threads) (Adjust base on GPU memory)')
 cmd:option('-learningRate', 1e-3, 'Learning rate')
 cmd:option('-weightInit', 'xavier', 'Weight initialization strategy: xavier|heuristic|kaiming')
 cmd:option('-dropout', 0.5, 'Dropout')
